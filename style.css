@@ -149,10 +149,25 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #0052FF 0%, #0066FF 100%);
     padding: 60px 20px;
     position: relative;
     overflow: hidden;
+}
+
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-youtube {
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
 }
 
 .hero-overlay {
@@ -161,7 +176,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1;
 }
 
