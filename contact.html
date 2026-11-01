@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의하기 - MonqWeb</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 네비게이션 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="MonqWeb Logo" class="logo-image">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">홈</a></li>
+                <li class="nav-dropdown">
+                    <a href="index.html#services">산업별 홈페이지</a>
+                    <div class="dropdown-menu">
+                        <a href="corporate.html">기업홈페이지</a>
+                        <a href="hospital.html">병원홈페이지</a>
+                    </div>
+                </li>
+                <li><a href="portfolio.html">포트폴리오</a></li>
+                <li><a href="index.html#pricing">가격</a></li>
+                <li><a href="contact.html">문의</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 페이지 헤더 -->
+    <section class="page-header">
+        <h1>문의하기</h1>
+        <p>궁금한 점이 있으신가요? 언제든지 연락주세요!</p>
+    </section>
+
+    <!-- 주요 내용 -->
+    <div class="container" style="padding: 80px 20px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1000px; margin: 0 auto;">
+            <!-- 문의 폼 -->
+            <div>
+                <h2 style="font-size: 1.8rem; color: #1A1A1A; margin-bottom: 2rem;">문의 폼</h2>
+                <form class="contact-form" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #1A1A1A;">이름 *</label>
+                        <input type="text" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #1A1A1A;">전화번호 *</label>
+                        <input type="tel" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #1A1A1A;">이메일 *</label>
+                        <input type="email" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #1A1A1A;">회사명</label>
+                        <input type="text" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #1A1A1A;">문의 내용 *</label>
+                        <textarea required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; font-family: inherit; min-height: 150px; resize: vertical;"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button primary" style="width: 100%; margin-top: 1rem;">문의 보내기</button>
+                </form>
+            </div>
+
+            <!-- 연락처 정보 -->
+            <div>
+                <h2 style="font-size: 1.8rem; color: #1A1A1A; margin-bottom: 2rem;">연락처 정보</h2>
+                <div style="display: flex; flex-direction: column; gap: 2rem;">
+                    <div>
+                        <h4 style="font-size: 1.1rem; color: #1A1A1A; margin-bottom: 0.5rem;">📍 사무실 위치</h4>
+                        <p style="color: #666; line-height: 1.8;">
+                            서울시 강남구 테헤란로 123<br>
+                            456호
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.1rem; color: #1A1A1A; margin-bottom: 0.5rem;">📞 전화</h4>
+                        <p style="color: #666; line-height: 1.8;">
+                            <a href="tel:0212345678" style="color: #0052FF; text-decoration: none;">02-1234-5678</a><br>
+                            <a href="tel:01098765432" style="color: #0052FF; text-decoration: none;">010-9876-5432</a>
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.1rem; color: #1A1A1A; margin-bottom: 0.5rem;">📧 이메일</h4>
+                        <p style="color: #666; line-height: 1.8;">
+                            <a href="mailto:info@monqweb.com" style="color: #0052FF; text-decoration: none;">info@monqweb.com</a><br>
+                            <a href="mailto:contact@monqweb.com" style="color: #0052FF; text-decoration: none;">contact@monqweb.com</a>
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.1rem; color: #1A1A1A; margin-bottom: 0.5rem;">🕐 영업시간</h4>
+                        <p style="color: #666; line-height: 1.8;">
+                            월-금: 09:00 - 18:00<br>
+                            토: 10:00 - 15:00<br>
+                            일: 휴무
+                        </p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #f5f7ff 0%, #e8f0ff 100%); padding: 1.5rem; border-radius: 12px;">
+                        <h4 style="font-size: 1.1rem; color: #1A1A1A; margin-bottom: 0.75rem;">💡 빠른 상담</h4>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">
+                            긴급한 상담이 필요하신가요? 바로 전화주세요!
+                        </p>
+                        <a href="tel:0212345678" class="cta-button primary" style="display: inline-block; font-size: 0.9rem;">지금 전화하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h5>MonqWeb</h5>
+                    <p>당신의 비즈니스를 성장시키는 웹사이트 제작 전문가</p>
+                </div>
+                <div class="footer-section">
+                    <h5>서비스</h5>
+                    <ul>
+                        <li><a href="corporate.html">기업홈페이지</a></li>
+                        <li><a href="hospital.html">병원홈페이지</a></li>
+                        <li><a href="portfolio.html">포트폴리오</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h5>회사</h5>
+                    <ul>
+                        <li><a href="index.html">메인</a></li>
+                        <li><a href="index.html">블로그</a></li>
+                        <li><a href="contact.html">문의</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h5>팔로우</h5>
+                    <div class="social-links">
+                        <a href="#">페이스북</a>
+                        <a href="#">인스타그램</a>
+                        <a href="#">유튜브</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MonqWeb. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #0052FF 0%, #0066FF 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 768px) {
+            .container > div {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+
+    <script src="script.js"></script>
+</body>
+</html>
