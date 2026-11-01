@@ -4,344 +4,1040 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MonqWeb - 전문 웹사이트 제작 서비스</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK KR', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: #fff;
+            z-index: 100;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .header.is-sticky {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .header__container {
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 100%;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+            letter-spacing: -1px;
+        }
+
+        .logo__text {
+            background: linear-gradient(135deg, #8b7355, #6b5b45);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .nav {
+            display: none;
+        }
+
+        .nav__list {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav__link {
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav__link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8b7355;
+            transition: width 0.3s;
+        }
+
+        .nav__link:hover {
+            color: #8b7355;
+        }
+
+        .nav__link:hover::after {
+            width: 100%;
+        }
+
+        .nav__toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 24px;
+            height: 24px;
+        }
+
+        .nav__toggle span {
+            width: 100%;
+            height: 2px;
+            background: #333;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ========== 플로팅 액션 버튼 ========== */
+        .floating-actions {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 50;
+        }
+
+        .fab {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s;
+            color: #fff;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .fab svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .fab--phone {
+            background: #8b7355;
+        }
+
+        .fab--message {
+            background: #a68974;
+        }
+
+        .fab--chat {
+            background: #6b5b45;
+        }
+
+        /* ========== MAIN CONTENT ========== */
+        main {
+            margin-top: 70px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #8b7355;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .section-title em {
+            font-style: italic;
+            background: linear-gradient(135deg, #8b7355, #6b5b45);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            position: relative;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero__bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #8b7355 0%, #6b5b45 100%);
+            z-index: -1;
+        }
+
+        .hero__content {
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .hero__title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .hero__title em {
+            font-style: italic;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .hero__subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #fff;
+            color: #8b7355;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ========== ABOUT SECTION ========== */
+        .about {
+            padding: 100px 20px;
+            background: #fff;
+        }
+
+        .about__content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about__text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* ========== SERVICES SECTION ========== */
+        .services {
+            padding: 100px 20px;
+            background: #f9f7f4;
+        }
+
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #ebe7e1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card__icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f5f3f0, #ebe7e1);
+            color: #8b7355;
+            font-size: 40px;
+        }
+
+        .service-card__title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+        }
+
+        .service-card__desc {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .service-card__features {
+            list-style: none;
+            font-size: 13px;
+            color: #888;
+            line-height: 2;
+        }
+
+        .service-card__features li::before {
+            content: '−';
+            margin-right: 8px;
+            color: #8b7355;
+            font-weight: 700;
+        }
+
+        /* ========== PORTFOLIO SECTION ========== */
+        .portfolio {
+            padding: 100px 20px;
+            background: #fff;
+        }
+
+        .portfolio__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .portfolio-card {
+            background: #f9f7f4;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid #ebe7e1;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .portfolio-card__image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #8b7355 0%, #6b5b45 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .portfolio-card__content {
+            padding: 25px;
+        }
+
+        .portfolio-card__category {
+            font-size: 12px;
+            font-weight: 600;
+            color: #8b7355;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-card__title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-card__desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* ========== PRICING SECTION ========== */
+        .pricing {
+            padding: 100px 20px;
+            background: #f9f7f4;
+        }
+
+        .pricing__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid #ebe7e1;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            border-color: #8b7355;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.is-featured {
+            border-color: #8b7355;
+            background: linear-gradient(135deg, rgba(139, 115, 85, 0.02) 0%, rgba(107, 91, 69, 0.02) 100%);
+        }
+
+        .pricing-card__badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #8b7355;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .pricing-card__name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+        }
+
+        .pricing-card__price {
+            font-size: 36px;
+            font-weight: 700;
+            color: #8b7355;
+            margin-bottom: 10px;
+        }
+
+        .pricing-card__unit {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .pricing-card__features {
+            list-style: none;
+            font-size: 13px;
+            color: #666;
+            line-height: 2.2;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .pricing-card__features li::before {
+            content: '✓';
+            margin-right: 8px;
+            color: #8b7355;
+            font-weight: 700;
+        }
+
+        .pricing-card .cta-button {
+            width: 100%;
+        }
+
+        /* ========== FAQ SECTION ========== */
+        .faq {
+            padding: 100px 20px;
+            background: #fff;
+        }
+
+        .faq__container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq__item {
+            border-bottom: 1px solid #ebe7e1;
+            padding: 25px 0;
+        }
+
+        .faq__item:last-child {
+            border-bottom: none;
+        }
+
+        .faq__question {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq__question::after {
+            content: '+';
+            font-size: 24px;
+            color: #8b7355;
+        }
+
+        .faq__item.is-open .faq__question::after {
+            content: '−';
+        }
+
+        .faq__answer {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #555;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq__item.is-open .faq__answer {
+            max-height: 500px;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #8b7355, #6b5b45);
+            color: #fff;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            padding: 60px 20px 40px;
+            background: #2c2c2c;
+            color: #fff;
+        }
+
+        .footer__container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer__content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer__section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .footer__section p,
+        .footer__section a {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            display: block;
+        }
+
+        .footer__section a {
+            transition: color 0.3s;
+        }
+
+        .footer__section a:hover {
+            color: #fff;
+        }
+
+        .footer__bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (min-width: 768px) {
+            .nav {
+                display: block;
+            }
+
+            .nav__list {
+                display: flex;
+            }
+
+            .nav__toggle {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero__title {
+                font-size: 36px;
+            }
+
+            .hero__subtitle {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .floating-actions {
+                bottom: 20px;
+                right: 20px;
+                gap: 10px;
+            }
+
+            .fab {
+                width: 48px;
+                height: 48px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- 네비게이션 -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="logo.png" alt="MonqWeb Logo" class="logo-image">
+    <!-- 헤더 -->
+    <header class="header is-sticky" id="header">
+        <div class="header__container">
+            <a class="logo" href="index.html" aria-label="MonqWeb">
+                <span class="logo__text">MonqWeb</span>
+            </a>
+            <nav class="nav" aria-label="네비게이션">
+                <ul class="nav__list">
+                    <li><a href="#about" class="nav__link">About</a></li>
+                    <li><a href="#services" class="nav__link">Services</a></li>
+                    <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
+                    <li><a href="#pricing" class="nav__link">Pricing</a></li>
+                    <li><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="nav__toggle" id="navToggle" aria-label="메뉴">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 플로팅 액션 버튼 -->
+    <div class="floating-actions">
+        <a href="tel:01012345678" class="fab fab--phone" title="전화">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.92 7.02C17.45 6.18 16.84 5.46 16.13 4.9M19.07 11.08c1.18-2.01 1.85-4.4 1.85-6.95 0-1.8-.22-3.53-.64-5.2H5c-3.87 0-7 3.13-7 7s3.13 7 7 7h1v2c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-2h6v2c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-2h1c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.68-4.99z"/></svg>
+        </a>
+        <a href="portfolio.html" class="fab fab--message" title="포트폴리오">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+        </a>
+        <a href="contact.html" class="fab fab--chat" title="문의">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        </a>
+    </div>
+
+    <main>
+        <!-- 히어로 섹션 -->
+        <section class="hero">
+            <div class="hero__content">
+                <h1 class="hero__title">
+                    당신의 꿈을<br>
+                    <em>웹사이트라는 가치로</em>
+                </h1>
+                <p class="hero__subtitle">전문 디자이너와 개발자가 만드는<br>맞춤형 웹사이트 제작 서비스</p>
+                <a href="contact.html" class="cta-button">무료 상담 신청</a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home">홈</a></li>
-                <li class="nav-dropdown">
-                    <a href="#services">산업별 홈페이지</a>
-                    <div class="dropdown-menu">
-                        <a href="corporate.html">기업홈페이지</a>
-                        <a href="hospital.html">병원홈페이지</a>
-                    </div>
-                </li>
-                <li><a href="portfolio.html">포트폴리오</a></li>
-                <li><a href="#pricing">가격</a></li>
-                <li><a href="contact.html">문의</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+            <div class="hero__bg"></div>
+        </section>
 
-    <!-- 히어로 섹션 -->
-    <section id="home" class="hero">
-        <div class="hero-video-container">
-            <iframe class="hero-youtube" src="https://www.youtube.com/embed/79BBkSDrw8I?autoplay=1&mute=1&loop=1&playlist=79BBkSDrw8I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>당신의 꿈을,<br>웹사이트라는 가치로.</h1>
-            <p>전문 디자이너와 개발자가 만드는 맞춤형 웹사이트</p>
-            <button class="cta-button primary">무료 상담 신청하기</button>
-        </div>
-    </section>
-
-    <!-- 서비스 소개 -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2>우리의 서비스</h2>
-            <p class="section-subtitle">산업별 특화된 웹사이트 솔루션</p>
-
-            <div class="services-grid">
-                <div id="corporate" class="service-card">
-                    <div class="service-icon">🏢</div>
-                    <h3>기업홈페이지</h3>
-                    <p>전문적이고 신뢰감 있는 기업 이미지를 구축하세요. 제품 소개, 뉴스, 채용정보 등 모든 기업 정보를 효과적으로 전달합니다.</p>
-                    <ul class="feature-list">
-                        <li>반응형 웹디자인</li>
-                        <li>SEO 최적화</li>
-                        <li>관리자 페이지</li>
-                        <li>고객문의 기능</li>
-                    </ul>
+        <!-- About 섹션 -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">/ About Us</span>
+                    <h2 class="section-title">
+                        MonqWeb은<br>
+                        <em>디지털 파트너입니다</em>
+                    </h2>
                 </div>
-
-                <div id="hospital" class="service-card">
-                    <div class="service-icon">🏥</div>
-                    <h3>병원홈페이지</h3>
-                    <p>환자 친화적인 병원 웹사이트로 신뢰를 구축하세요. 진료 예약, 의료진 소개, 시설 안내 등의 기능을 포함합니다.</p>
-                    <ul class="feature-list">
-                        <li>예약 시스템 통합</li>
-                        <li>의료진 소개</li>
-                        <li>진료과목 안내</li>
-                        <li>환자 평가 시스템</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 웹사이트 제작 과정 -->
-    <section class="process">
-        <div class="container">
-            <h2>웹사이트 제작 과정</h2>
-            <p class="section-subtitle">우리의 체계적인 제작 프로세스</p>
-
-            <div class="process-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-number">1</div>
-                    <h4>상담 및 기획</h4>
-                    <p>당신의 사업 목표와 요구사항을 파악합니다</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-number">2</div>
-                    <h4>디자인 제안</h4>
-                    <p>맞춤형 디자인 컨셉을 제시합니다</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-number">3</div>
-                    <h4>개발 및 구현</h4>
-                    <p>최신 기술로 웹사이트를 개발합니다</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-number">4</div>
-                    <h4>테스트 및 배포</h4>
-                    <p>완벽하게 검수 후 오픈합니다</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-number">5</div>
-                    <h4>사후관리</h4>
-                    <p>지속적인 유지보수와 지원을 제공합니다</p>
+                <div class="about__content">
+                    <p class="about__text">
+                        단순히 웹사이트를 만드는 것이 아닙니다.<br>
+                        당신의 비즈니스를 이해하고, 브랜드의 가치를 담아<br>
+                        고객에게 어떻게 전달할지 함께 고민합니다.
+                    </p>
+                    <p class="about__text">
+                        스타트업부터 기업까지,<br>
+                        모두가 신뢰할 수 있는 웹 파트너로 함께하겠습니다.
+                    </p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 포트폴리오 -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2>포트폴리오</h2>
-            <p class="section-subtitle">완성된 웹사이트 사례들</p>
+        <!-- Services 섹션 -->
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">/ Services</span>
+                    <h2 class="section-title">산업별 전문 서비스</h2>
+                </div>
+                <div class="services__grid">
+                    <!-- 기업홈페이지 -->
+                    <article class="service-card">
+                        <div class="service-card__icon">🏢</div>
+                        <h3 class="service-card__title">기업홈페이지</h3>
+                        <p class="service-card__desc">전문성과 신뢰감을 담은 기업 이미지 구축</p>
+                        <ul class="service-card__features">
+                            <li>반응형 웹디자인</li>
+                            <li>SEO 최적화</li>
+                            <li>관리자 페이지</li>
+                        </ul>
+                    </article>
 
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-image"></div>
-                    <h4>K-Tech Solutions</h4>
-                    <p class="portfolio-category">기업홈페이지</p>
-                    <p>IT 기업의 전문성을 드러내는 현대적 디자인</p>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image"></div>
-                    <h4>은혜병원</h4>
-                    <p class="portfolio-category">병원홈페이지</p>
-                    <p>환자 중심의 사용자 경험을 제공하는 병원 사이트</p>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image"></div>
-                    <h4>스마트 솔루션</h4>
-                    <p class="portfolio-category">기업홈페이지</p>
-                    <p>B2B 마케팅에 최적화된 웹사이트</p>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image"></div>
-                    <h4>미래의료센터</h4>
-                    <p class="portfolio-category">병원홈페이지</p>
-                    <p>첨단 의료 서비스를 표현하는 고급 웹사이트</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <!-- 병원홈페이지 -->
+                    <article class="service-card">
+                        <div class="service-card__icon">🏥</div>
+                        <h3 class="service-card__title">병원홈페이지</h3>
+                        <p class="service-card__desc">환자 신뢰 중심의 의료 웹사이트</p>
+                        <ul class="service-card__features">
+                            <li>온라인 예약 시스템</li>
+                            <li>의료진 소개</li>
+                            <li>신뢰도 관리</li>
+                        </ul>
+                    </article>
 
-    <!-- 가격 -->
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <h2>가격 패키지</h2>
-            <p class="section-subtitle">당신의 필요에 맞는 패키지를 선택하세요</p>
+                    <!-- 쇼핑몰 -->
+                    <article class="service-card">
+                        <div class="service-card__icon">🛍️</div>
+                        <h3 class="service-card__title">쇼핑몰</h3>
+                        <p class="service-card__desc">매출을 높이는 이커머스 솔루션</p>
+                        <ul class="service-card__features">
+                            <li>결제 시스템 연동</li>
+                            <li>상품 관리 시스템</li>
+                            <li>마케팅 도구</li>
+                        </ul>
+                    </article>
 
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>스탠다드</h3>
-                        <p class="price">1,500,000원</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>반응형 웹디자인</li>
-                        <li>5개 페이지</li>
-                        <li>기본 SEO</li>
-                        <li>3개월 무료 유지보수</li>
-                    </ul>
-                    <button class="cta-button secondary">자세히 보기</button>
-                </div>
-
-                <div class="pricing-card featured">
-                    <div class="badge">인기</div>
-                    <div class="pricing-header">
-                        <h3>프로페셔널</h3>
-                        <p class="price">2,500,000원</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>반응형 웹디자인</li>
-                        <li>10개 페이지</li>
-                        <li>고급 SEO</li>
-                        <li>관리자 페이지</li>
-                        <li>6개월 무료 유지보수</li>
-                    </ul>
-                    <button class="cta-button primary">지금 신청</button>
-                </div>
-
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>엔터프라이즈</h3>
-                        <p class="price">맞춤형</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>완전 맞춤 개발</li>
-                        <li>무제한 페이지</li>
-                        <li>고급 기능 통합</li>
-                        <li>API 연동</li>
-                        <li>1년 무료 유지보수</li>
-                    </ul>
-                    <button class="cta-button secondary">문의하기</button>
+                    <!-- 포트폴리오 -->
+                    <article class="service-card">
+                        <div class="service-card__icon">🎨</div>
+                        <h3 class="service-card__title">포트폴리오</h3>
+                        <p class="service-card__desc">작업물을 제대로 보여주는 전시 공간</p>
+                        <ul class="service-card__features">
+                            <li>갤러리 레이아웃</li>
+                            <li>카테고리 필터링</li>
+                            <li>상세 페이지</li>
+                        </ul>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 고객 후기 -->
-    <section class="testimonials">
-        <div class="container">
-            <h2>고객 후기</h2>
-            <p class="section-subtitle">우리의 서비스를 이용하신 고객들의 평가</p>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">"완성도 높은 웹사이트로 매출이 30% 증가했습니다. 정말 감사합니다!"</div>
-                    <div class="testimonial-author">
-                        <div class="author-name">김진수</div>
-                        <div class="author-company">K-Tech Solutions 대표</div>
-                    </div>
+        <!-- Portfolio 섹션 -->
+        <section class="portfolio" id="portfolio">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">/ Portfolio</span>
+                    <h2 class="section-title">완성된 프로젝트</h2>
                 </div>
+                <div class="portfolio__grid">
+                    <!-- 포트폴리오 1 -->
+                    <article class="portfolio-card">
+                        <div class="portfolio-card__image">프로젝트 이미지</div>
+                        <div class="portfolio-card__content">
+                            <span class="portfolio-card__category">기업홈페이지</span>
+                            <h3 class="portfolio-card__title">테크스타트업 A</h3>
+                            <p class="portfolio-card__desc">현대적인 기술기업 이미지 구축</p>
+                        </div>
+                    </article>
 
-                <div class="testimonial-card">
-                    <div class="testimonial-text">"환자들이 쉽게 예약할 수 있는 시스템이 정말 좋습니다. 운영이 훨씬 수월해졌어요."</div>
-                    <div class="testimonial-author">
-                        <div class="author-name">이영미</div>
-                        <div class="author-company">은혜병원 원장</div>
-                    </div>
-                </div>
+                    <!-- 포트폴리오 2 -->
+                    <article class="portfolio-card">
+                        <div class="portfolio-card__image">프로젝트 이미지</div>
+                        <div class="portfolio-card__content">
+                            <span class="portfolio-card__category">병원홈페이지</span>
+                            <h3 class="portfolio-card__title">의료센터 B</h3>
+                            <p class="portfolio-card__desc">환자 중심의 신뢰형 의료 웹사이트</p>
+                        </div>
+                    </article>
 
-                <div class="testimonial-card">
-                    <div class="testimonial-text">"디자인도 예쁘고 반응도 빠릅니다. 전문성이 드러나는 사이트입니다."</div>
-                    <div class="testimonial-author">
-                        <div class="author-name">박동준</div>
-                        <div class="author-company">스마트 솔루션 대표</div>
-                    </div>
+                    <!-- 포트폴리오 3 -->
+                    <article class="portfolio-card">
+                        <div class="portfolio-card__image">프로젝트 이미지</div>
+                        <div class="portfolio-card__content">
+                            <span class="portfolio-card__category">쇼핑몰</span>
+                            <h3 class="portfolio-card__title">온라인 스토어 C</h3>
+                            <p class="portfolio-card__desc">전환율 높은 이커머스 플랫폼</p>
+                        </div>
+                    </article>
+
+                    <!-- 포트폴리오 4 -->
+                    <article class="portfolio-card">
+                        <div class="portfolio-card__image">프로젝트 이미지</div>
+                        <div class="portfolio-card__content">
+                            <span class="portfolio-card__category">포트폴리오</span>
+                            <h3 class="portfolio-card__title">디자이너 D</h3>
+                            <p class="portfolio-card__desc">작업물을 효과적으로 전시하는 포트폴리오</p>
+                        </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA 섹션 -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>오늘부터 온라인 성공을 시작하세요</h2>
-            <p>전문가 상담은 무료입니다. 지금 바로 연락주세요.</p>
-            <button class="cta-button primary large">무료 상담 신청</button>
-        </div>
-    </section>
+        <!-- Pricing 섹션 -->
+        <section class="pricing" id="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">/ Pricing</span>
+                    <h2 class="section-title">가격 패키지</h2>
+                </div>
+                <div class="pricing__grid">
+                    <!-- 스탠다드 -->
+                    <article class="pricing-card">
+                        <h3 class="pricing-card__name">스탠다드</h3>
+                        <div class="pricing-card__price">1,500,000</div>
+                        <div class="pricing-card__unit">원</div>
+                        <ul class="pricing-card__features">
+                            <li>반응형 웹디자인</li>
+                            <li>5개 페이지</li>
+                            <li>기본 SEO</li>
+                            <li>3개월 유지보수</li>
+                        </ul>
+                        <a href="contact.html" class="cta-button">문의하기</a>
+                    </article>
 
-    <!-- 문의 섹션 -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>문의하기</h2>
-            <p class="section-subtitle">궁금한 점이 있으신가요?</p>
+                    <!-- 프로페셔널 (인기) -->
+                    <article class="pricing-card is-featured">
+                        <div class="pricing-card__badge">인기</div>
+                        <h3 class="pricing-card__name">프로페셔널</h3>
+                        <div class="pricing-card__price">2,500,000</div>
+                        <div class="pricing-card__unit">원</div>
+                        <ul class="pricing-card__features">
+                            <li>반응형 웹디자인</li>
+                            <li>10개 페이지</li>
+                            <li>고급 SEO</li>
+                            <li>관리자 페이지</li>
+                            <li>6개월 유지보수</li>
+                        </ul>
+                        <a href="contact.html" class="cta-button">지금 신청</a>
+                    </article>
 
-            <div class="contact-content">
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">이름</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">전화번호</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">이메일</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="company">회사명</label>
-                        <input type="text" id="company" name="company">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">메시지</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="cta-button primary">문의 보내기</button>
-                </form>
+                    <!-- 엔터프라이즈 -->
+                    <article class="pricing-card">
+                        <h3 class="pricing-card__name">엔터프라이즈</h3>
+                        <div class="pricing-card__price">맞춤형</div>
+                        <div class="pricing-card__unit">상담 필수</div>
+                        <ul class="pricing-card__features">
+                            <li>완전 맞춤 개발</li>
+                            <li>무제한 페이지</li>
+                            <li>고급 기능</li>
+                            <li>API 연동</li>
+                            <li>1년 유지보수</li>
+                        </ul>
+                        <a href="contact.html" class="cta-button">상담받기</a>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h4>📍 위치</h4>
-                        <p>서울시 강남구 테헤란로 123<br>456호</p>
+        <!-- FAQ 섹션 -->
+        <section class="faq" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">/ FAQ</span>
+                    <h2 class="section-title">자주 묻는 질문</h2>
+                </div>
+                <div class="faq__container">
+                    <div class="faq__item">
+                        <h3 class="faq__question">제작 기간은 어느 정도 되나요?</h3>
+                        <div class="faq__answer">
+                            웹사이트 규모에 따라 다르지만 일반적으로 4-8주 소요됩니다. 간단한 홈페이지는 4주, 복잡한 기능이 있는 사이트는 8주 이상 소요될 수 있습니다.
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <h4>📞 전화</h4>
-                        <p>02-1234-5678<br>010-9876-5432</p>
+
+                    <div class="faq__item">
+                        <h3 class="faq__question">기존 도메인을 계속 사용할 수 있나요?</h3>
+                        <div class="faq__answer">
+                            네, 당연합니다. 기존 도메인을 유지하면서 새로운 웹사이트로 전환할 수 있습니다. 무중단 이전을 보장하므로 서비스 중단이 없습니다.
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <h4>📧 이메일</h4>
-                        <p>info@webdesignpro.com<br>contact@webdesignpro.com</p>
+
+                    <div class="faq__item">
+                        <h3 class="faq__question">모바일 최적화는 어떻게 되나요?</h3>
+                        <div class="faq__answer">
+                            모든 웹사이트는 반응형 디자인으로 제작되어 스마트폰, 태블릿, PC에서 모두 최적화됩니다. 별도의 모바일 사이트 개발은 필요 없습니다.
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <h4>🕐 영업시간</h4>
-                        <p>월-금: 09:00 - 18:00<br>토: 10:00 - 15:00</p>
+
+                    <div class="faq__item">
+                        <h3 class="faq__question">SEO는 어떻게 적용되나요?</h3>
+                        <div class="faq__answer">
+                            기본 SEO는 모든 패키지에 포함되며, 메타태그, 구조화된 데이터, 사이트맵 등을 최적화합니다. 프로페셔널 이상 패키지에서는 고급 SEO 전략도 포함됩니다.
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <h3 class="faq__question">유지보수는 어떻게 이루어지나요?</h3>
+                        <div class="faq__answer">
+                            패키지에 따라 3개월~1년의 무료 유지보수가 제공됩니다. 그 이후는 월정액으로 지속적인 관리 서비스를 받을 수 있습니다.
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <h3 class="faq__question">보안은 어떻게 보장하나요?</h3>
+                        <div class="faq__answer">
+                            SSL 암호화, 정기적인 백업, 보안 업데이트를 제공합니다. 의료, 금융 등 민감한 정보가 있는 경우 추가 보안 조치를 협의할 수 있습니다.
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- CTA 섹션 -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>지금 바로 시작하세요</h2>
+                <p>당신의 온라인 성공 여정을 MonqWeb과 함께 시작하세요</p>
+                <a href="contact.html" class="cta-button">무료 상담받기</a>
+            </div>
+        </section>
+    </main>
 
     <!-- 푸터 -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h5>MonqWeb</h5>
-                    <p>당신의 비즈니스를 성장시키는 웹사이트 제작 전문가</p>
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h4>MonqWeb</h4>
+                    <p>당신의 꿈을 웹사이트라는 가치로</p>
+                    <p style="margin-top: 10px; font-size: 12px; color: rgba(255, 255, 255, 0.5);">전문 디자이너와 개발자의 팀</p>
                 </div>
-                <div class="footer-section">
-                    <h5>서비스</h5>
-                    <ul>
-                        <li><a href="#corporate">기업홈페이지</a></li>
-                        <li><a href="#hospital">병원홈페이지</a></li>
-                        <li><a href="#portfolio">포트폴리오</a></li>
-                    </ul>
+                <div class="footer__section">
+                    <h4>문의</h4>
+                    <a href="tel:01012345678">☎ 010-1234-5678</a>
+                    <a href="mailto:info@monqweb.com">✉ info@monqweb.com</a>
                 </div>
-                <div class="footer-section">
-                    <h5>회사</h5>
-                    <ul>
-                        <li><a href="#about">회사소개</a></li>
-                        <li><a href="#blog">블로그</a></li>
-                        <li><a href="#contact">문의</a></li>
-                    </ul>
+                <div class="footer__section">
+                    <h4>주소</h4>
+                    <p>서울시 강남구 테헤란로 123<br>MonqWeb 빌딩 5층</p>
                 </div>
-                <div class="footer-section">
-                    <h5>팔로우</h5>
-                    <div class="social-links">
-                        <a href="#">페이스북</a>
-                        <a href="#">인스타그램</a>
-                        <a href="#">유튜브</a>
-                    </div>
+                <div class="footer__section">
+                    <h4>서비스</h4>
+                    <a href="#services">기업홈페이지</a>
+                    <a href="#services">병원홈페이지</a>
+                    <a href="portfolio.html">포트폴리오</a>
+                    <a href="contact.html">문의하기</a>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footer__bottom">
                 <p>&copy; 2024 MonqWeb. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // FAQ 아코디언
+        document.querySelectorAll('.faq__question').forEach(item => {
+            item.addEventListener('click', () => {
+                const faqItem = item.closest('.faq__item');
+                faqItem.classList.toggle('is-open');
+            });
+        });
+
+        // 부드러운 스크롤
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
