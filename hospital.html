@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>병원홈페이지 전문 제작 - MonqWeb</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
         * {
@@ -17,14 +20,15 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK KR', sans-serif;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans CJK KR', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #2c2c2c;
+            background: #ffffff;
         }
 
         .navbar {
             background: white;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -40,70 +44,55 @@
         }
 
         .logo img {
-            height: 50px;
+            height: 45px;
             width: auto;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         .nav-menu a {
-            color: #333;
+            color: #555;
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: color 0.3s;
         }
 
         .nav-menu a:hover {
-            color: #0052FF;
+            color: #8b7355;
         }
 
-        /* ===== 메인 히어로 ===== */
+        /* ===== 히어로 섹션 ===== */
         .hero {
-            background: linear-gradient(135deg, #0052FF 0%, #0066FF 50%, #003D99 100%);
-            color: white;
-            padding: 120px 20px;
+            background: linear-gradient(to bottom, #fafaf8 0%, #f5f3f0 100%);
+            padding: 100px 20px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="20" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="80" r="30" fill="rgba(255,255,255,0.05)"/></svg>');
-            opacity: 0.3;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
             max-width: 800px;
             margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 900;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 3.2rem;
+            margin-bottom: 1.2rem;
+            font-weight: 800;
+            line-height: 1.3;
+            letter-spacing: -0.015em;
+            color: #1a1a1a;
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 2.5rem;
-            opacity: 0.98;
-            font-weight: 300;
+            color: #666;
+            font-weight: 400;
         }
 
         .hero-buttons {
@@ -114,38 +103,36 @@
         }
 
         .btn {
-            padding: 1.1rem 3rem;
+            padding: 1rem 2.8rem;
             border: none;
-            border-radius: 50px;
-            font-size: 1.05rem;
-            font-weight: 700;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            font-family: 'Pretendard', sans-serif;
         }
 
         .btn-primary {
-            background: white;
-            color: #0052FF;
+            background: #6b5b45;
+            color: white;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            background: #5a4a38;
+            transform: translateY(-2px);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid white;
-            backdrop-filter: blur(10px);
+            background: transparent;
+            color: #6b5b45;
+            border: 2px solid #6b5b45;
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
+            background: #f0ede8;
         }
 
         /* ===== 섹션 공통 ===== */
@@ -159,17 +146,17 @@
         }
 
         .section h2 {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            color: #1A1A1A;
-            letter-spacing: -0.02em;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            letter-spacing: -0.015em;
         }
 
         .section-subtitle {
-            font-size: 1.2rem;
-            color: #0052FF;
-            font-weight: 700;
+            font-size: 1.1rem;
+            color: #8b7355;
+            font-weight: 600;
         }
 
         .container {
@@ -179,142 +166,96 @@
 
         /* ===== 문제점 섹션 ===== */
         .problems-section {
-            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
-            position: relative;
-        }
-
-        .problems-section::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 82, 255, 0.1), transparent);
-            border-radius: 50%;
+            background: #ffffff;
         }
 
         .problems-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-            gap: 2.5rem;
-            position: relative;
-            z-index: 1;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
         }
 
         .problem-card {
-            background: white;
+            background: #fafaf8;
             padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid transparent;
-            border-top: 5px solid #0052FF;
+            border-radius: 8px;
+            border-left: 4px solid #8b7355;
+            transition: all 0.3s;
         }
 
         .problem-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 50px rgba(0, 82, 204, 0.25);
-            border-color: #0052FF;
+            background: #f5f3f0;
+            transform: translateY(-4px);
         }
 
         .problem-num {
-            background: linear-gradient(135deg, #0052FF, #0066FF);
+            background: #8b7355;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 8px 20px rgba(0, 82, 204, 0.4);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
         }
 
         .problem-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: #1A1A1A;
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+            color: #1a1a1a;
             font-weight: 700;
         }
 
         .problem-card p {
             color: #666;
-            font-size: 0.98rem;
+            font-size: 0.95rem;
             line-height: 1.7;
+            font-weight: 400;
         }
 
         /* ===== 솔루션 섹션 ===== */
         .solution-section {
-            background: linear-gradient(180deg, #ffffff 0%, #f0f4ff 100%);
-            position: relative;
-        }
-
-        .solution-section::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 82, 255, 0.1), transparent);
-            border-radius: 50%;
+            background: #fafaf8;
         }
 
         .solution-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            position: relative;
-            z-index: 1;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
         }
 
         .solution-card {
             background: white;
             padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s;
-            border-left: 6px solid #0052FF;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .solution-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, rgba(0, 82, 255, 0.1), transparent);
-            border-radius: 0 0 0 100%;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 1px solid #ebe7e1;
         }
 
         .solution-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 82, 204, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
         }
 
         .solution-icon {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            display: block;
         }
 
         .solution-card h3 {
-            font-size: 1.3rem;
-            color: #1A1A1A;
-            margin-bottom: 1.2rem;
+            font-size: 1.25rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
             font-weight: 700;
         }
 
         .solution-card p {
             color: #666;
-            margin-bottom: 2rem;
-            font-size: 0.98rem;
+            margin-bottom: 1.8rem;
+            font-size: 0.95rem;
             line-height: 1.8;
         }
 
@@ -323,28 +264,25 @@
         }
 
         .solution-features li {
-            padding: 0.75rem 0;
+            padding: 0.6rem 0;
             color: #555;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.7rem;
             font-weight: 500;
         }
 
         .solution-features li:before {
-            content: "✓";
-            background: linear-gradient(135deg, #0052FF, #0066FF);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 900;
+            content: "−";
+            color: #8b7355;
+            font-weight: 700;
             font-size: 1.2rem;
         }
 
         /* ===== 프로세스 섹션 ===== */
         .process-section {
-            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+            background: white;
         }
 
         .process-container {
@@ -353,7 +291,7 @@
             justify-content: center;
             gap: 1.5rem;
             flex-wrap: wrap;
-            margin-top: 4rem;
+            margin-top: 3rem;
         }
 
         .process-step {
@@ -361,55 +299,45 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            min-width: 150px;
-            flex: 1;
-            max-width: 200px;
+            min-width: 140px;
         }
 
         .step-circle {
-            background: linear-gradient(135deg, #0052FF, #0066FF);
+            background: #8b7355;
             color: white;
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 12px 30px rgba(0, 82, 204, 0.4);
-            transition: all 0.3s;
-        }
-
-        .process-step:hover .step-circle {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(0, 82, 204, 0.5);
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
         }
 
         .process-step h4 {
-            font-size: 1.1rem;
-            color: #1A1A1A;
-            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
             font-weight: 700;
         }
 
         .process-step p {
             color: #666;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.85rem;
+            line-height: 1.5;
         }
 
         .process-arrow {
-            color: #0052FF;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            font-weight: 700;
+            color: #ccc;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         /* ===== 환자 여정 섹션 ===== */
         .journey-section {
-            background: linear-gradient(180deg, #ffffff 0%, #f5f7ff 100%);
+            background: #fafaf8;
         }
 
         .journey-path {
@@ -418,36 +346,32 @@
             justify-content: center;
             gap: 1rem;
             flex-wrap: wrap;
-            margin-top: 4rem;
+            margin-top: 3rem;
         }
 
         .journey-step {
             background: white;
-            padding: 2rem;
-            border-radius: 16px;
+            padding: 1.8rem;
+            border-radius: 8px;
             text-align: center;
-            min-width: 140px;
-            flex: 1;
-            max-width: 160px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            min-width: 130px;
+            border: 1px solid #ebe7e1;
             transition: all 0.3s;
-            border: 2px solid #e0e8ff;
         }
 
         .journey-step:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 82, 204, 0.2);
-            border-color: #0052FF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            border-color: #8b7355;
         }
 
         .journey-icon {
-            font-size: 3rem;
-            margin-bottom: 0.75rem;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
         }
 
         .journey-step h4 {
-            font-size: 0.95rem;
-            color: #1A1A1A;
+            font-size: 0.9rem;
+            color: #1a1a1a;
             margin-bottom: 0.5rem;
             font-weight: 700;
         }
@@ -459,161 +383,136 @@
         }
 
         .journey-arrow {
-            color: #0052FF;
-            font-size: 1.8rem;
-            font-weight: 900;
+            color: #ccc;
+            font-size: 1.5rem;
         }
 
         /* ===== 기능 섹션 ===== */
         .features-section {
-            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+            background: white;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 2rem;
         }
 
         .feature-box {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
+            background: #fafaf8;
+            padding: 2.2rem;
+            border-radius: 8px;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s;
-            border-top: 4px solid #0052FF;
+            border: 1px solid #ebe7e1;
         }
 
         .feature-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 82, 204, 0.15);
+            background: #f5f3f0;
+            border-color: #8b7355;
         }
 
         .feature-emoji {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            display: block;
         }
 
         .feature-box h4 {
-            font-size: 1.15rem;
-            color: #1A1A1A;
-            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: #1a1a1a;
+            margin-bottom: 0.75rem;
             font-weight: 700;
         }
 
         .feature-box p {
             color: #666;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
         }
 
         /* ===== FAQ 섹션 ===== */
         .faq-section {
-            background: white;
+            background: #fafaf8;
         }
 
         .faq-container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 3rem auto 0;
         }
 
         .faq-item {
-            background: linear-gradient(135deg, #f5f7ff 0%, #f0f4ff 100%);
+            background: white;
             padding: 2rem;
-            margin-bottom: 1.5rem;
-            border-radius: 16px;
-            border-left: 5px solid #0052FF;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.2rem;
+            border-radius: 8px;
+            border-left: 4px solid #8b7355;
             transition: all 0.3s;
         }
 
         .faq-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 8px 20px rgba(0, 82, 204, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
         .faq-question {
             font-weight: 700;
-            color: #1A1A1A;
-            font-size: 1.05rem;
-            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .faq-answer {
             color: #666;
-            font-size: 0.98rem;
+            font-size: 0.95rem;
             line-height: 1.8;
         }
 
         /* ===== CTA 섹션 ===== */
         .cta-section {
-            background: linear-gradient(135deg, #0052FF 0%, #0066FF 50%, #003D99 100%);
-            color: white;
-            padding: 120px 20px;
+            background: linear-gradient(to bottom, #f5f3f0 0%, #ebe7e1 100%);
+            padding: 100px 20px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="20" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="80" r="30" fill="rgba(255,255,255,0.05)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 2;
         }
 
         .cta-section h2 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-weight: 800;
             font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            color: white;
-            font-weight: 900;
         }
 
         .cta-section p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 2.5rem;
-            opacity: 0.98;
+            color: #666;
         }
 
         /* ===== 푸터 ===== */
         .footer {
-            background: #1A1A1A;
+            background: #2c2c2c;
             color: white;
-            padding: 70px 20px 25px;
+            padding: 60px 20px 20px;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 3rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .footer-section h5 {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
             font-weight: 700;
         }
 
         .footer-section p,
         .footer-section a {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
             text-decoration: none;
             display: block;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
             transition: color 0.3s;
         }
 
@@ -626,13 +525,13 @@
             padding-top: 2rem;
             text-align: center;
             color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         /* ===== 반응형 ===== */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
 
             .section h2 {
@@ -651,7 +550,6 @@
             .process-container,
             .journey-path {
                 flex-direction: column;
-                gap: 2rem;
             }
 
             .process-arrow,
@@ -678,13 +576,13 @@
         </div>
     </nav>
 
-    <!-- 메인 히어로 -->
+    <!-- 히어로 섹션 -->
     <section class="hero">
         <div class="hero-content">
-            <h1>환자는 검색으로 병원을 고릅니다</h1>
-            <p>검색 최적화된 전문적인 병원 홈페이지로 온라인 환자를 끌어모으세요</p>
+            <h1>환자는 검색으로 병원을 선택합니다</h1>
+            <p>신뢰할 수 있는 디지털 경험으로 환자와 연결되세요</p>
             <div class="hero-buttons">
-                <a href="contact.html" class="btn btn-primary">무료 진단 신청</a>
+                <a href="contact.html" class="btn btn-primary">상담 신청</a>
                 <a href="#problems" class="btn btn-secondary">자세히 보기</a>
             </div>
         </div>
@@ -694,82 +592,82 @@
     <section class="section problems-section">
         <div class="container">
             <div class="section-header">
-                <h2>병원이 겪는 공통 문제</h2>
-                <p class="section-subtitle">이런 고민은 없으신가요?</p>
+                <h2>병원이 직면한 과제</h2>
+                <p class="section-subtitle">이러한 어려움을 겪고 계신가요?</p>
             </div>
 
             <div class="problems-grid">
                 <div class="problem-card" id="problems">
                     <div class="problem-num">01</div>
-                    <h3>홈페이지는 있는데 문의가 없습니다</h3>
-                    <p>검색 최적화가 되지 않아 환자들이 병원을 찾지 못하고 있습니다</p>
+                    <h3>온라인 가시성 부족</h3>
+                    <p>검색 최적화 없이는 환자들이 병원을 찾지 못합니다</p>
                 </div>
                 <div class="problem-card">
                     <div class="problem-num">02</div>
-                    <h3>온라인 예약 시스템이 필요합니다</h3>
-                    <p>24시간 자동 예약으로 업무 부담을 줄이고 고객 만족도를 높이세요</p>
+                    <h3>예약 시스템 부재</h3>
+                    <p>24시간 자동 예약으로 운영 효율을 높이세요</p>
                 </div>
                 <div class="problem-card">
                     <div class="problem-num">03</div>
-                    <h3>의료진 정보를 제대로 공개하고 싶습니다</h3>
-                    <p>신뢰도 있는 의료진 소개로 환자의 신뢰도를 획기적으로 높이세요</p>
+                    <h3>신뢰도 구축 어려움</h3>
+                    <p>의료진 정보와 후기로 환자 신뢰를 확보하세요</p>
                 </div>
                 <div class="problem-card">
                     <div class="problem-num">04</div>
-                    <h3>모바일 환자 유입이 부족합니다</h3>
-                    <p>완벽한 반응형 디자인으로 모든 디바이스에 최적화하세요</p>
+                    <h3>모바일 사용자 미지원</h3>
+                    <p>스마트폰 사용자를 놓치고 있지는 않으신가요?</p>
                 </div>
                 <div class="problem-card">
                     <div class="problem-num">05</div>
-                    <h3>SEO 최적화가 필요합니다</h3>
-                    <p>검색 엔진 최적화로 지역 검색에 상위 노출되세요</p>
+                    <h3>마케팅 채널 부족</h3>
+                    <p>통합적인 디지털 마케팅 전략이 필요합니다</p>
                 </div>
                 <div class="problem-card">
                     <div class="problem-num">06</div>
-                    <h3>환자 관리 시스템이 부족합니다</h3>
-                    <p>웹사이트와 연동된 환자 관리 시스템으로 운영을 효율화하세요</p>
+                    <h3>관리 도구 미흡</h3>
+                    <p>환자 정보 관리와 분석 도구를 갖춰야 합니다</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 솔루션 -->
+    <!-- 솔루션 섹션 -->
     <section class="section solution-section">
         <div class="container">
             <div class="section-header">
-                <h2>MonqWeb의 병원 맞춤 솔루션</h2>
-                <p class="section-subtitle">3가지 핵심 전략</p>
+                <h2>MonqWeb의 종합 솔루션</h2>
+                <p class="section-subtitle">환자 중심의 온라인 전략</p>
             </div>
 
             <div class="solution-grid">
                 <div class="solution-card">
                     <div class="solution-icon">🔍</div>
-                    <h3>검색 최적화 (SEO)</h3>
-                    <p>환자들이 검색할 때 가장 먼저 노출되는 병원이 되세요</p>
+                    <h3>검색 최적화</h3>
+                    <p>환자가 찾을 때 가장 먼저 떠오르는 병원이 되세요</p>
                     <ul class="solution-features">
-                        <li>지역 검색 최적화</li>
-                        <li>진료과목별 최적화</li>
+                        <li>지역 기반 검색 최적화</li>
+                        <li>진료과목별 전문성 표현</li>
                         <li>의료진 프로필 최적화</li>
                     </ul>
                 </div>
                 <div class="solution-card">
                     <div class="solution-icon">📅</div>
-                    <h3>온라인 예약 시스템</h3>
-                    <p>환자가 24시간 온라인으로 예약할 수 있어 운영 효율이 극대화됩니다</p>
+                    <h3>스마트 예약 시스템</h3>
+                    <p>365일 24시간 자동 예약으로 편의를 높이세요</p>
                     <ul class="solution-features">
-                        <li>24시간 자동 예약</li>
-                        <li>SMS 알림 기능</li>
-                        <li>의료진별 일정 관리</li>
+                        <li>온라인 예약 자동화</li>
+                        <li>SMS 및 이메일 알림</li>
+                        <li>의료진 일정 연동</li>
                     </ul>
                 </div>
                 <div class="solution-card">
                     <div class="solution-icon">⭐</div>
-                    <h3>환자 후기 시스템</h3>
-                    <p>실제 환자의 평점과 후기로 신뢰도를 높이고 신규 환자를 유입합니다</p>
+                    <h3>신뢰도 관리</h3>
+                    <p>환자의 목소리로 신뢰를 구축하세요</p>
                     <ul class="solution-features">
-                        <li>평점 및 후기 관리</li>
-                        <li>후기 검증 시스템</li>
-                        <li>별점 표시</li>
+                        <li>환자 후기 및 평점</li>
+                        <li>의료진 소개 및 경력</li>
+                        <li>시설 및 장비 안내</li>
                     </ul>
                 </div>
             </div>
@@ -780,69 +678,69 @@
     <section class="section process-section">
         <div class="container">
             <div class="section-header">
-                <h2>병원 홈페이지 제작 프로세스</h2>
-                <p class="section-subtitle">체계적인 5단계 설계</p>
+                <h2>제작 프로세스</h2>
+                <p class="section-subtitle">체계적이고 신뢰할 수 있는 프로세스</p>
             </div>
 
             <div class="process-container">
                 <div class="process-step">
                     <div class="step-circle">1</div>
-                    <h4>병원 분석</h4>
-                    <p>병원의 특징과 강점을 파악합니다</p>
+                    <h4>분석</h4>
+                    <p>병원의 강점과<br>환자 특성 파악</p>
                 </div>
                 <div class="process-arrow">→</div>
                 <div class="process-step">
                     <div class="step-circle">2</div>
-                    <h4>환자 분석</h4>
-                    <p>타깃 환자의 검색 패턴을 분석합니다</p>
+                    <h4>전략</h4>
+                    <p>맞춤형 마케팅<br>전략 수립</p>
                 </div>
                 <div class="process-arrow">→</div>
                 <div class="process-step">
                     <div class="step-circle">3</div>
-                    <h4>경쟁사 분석</h4>
-                    <p>지역 경쟁 병원들을 분석합니다</p>
+                    <h4>설계</h4>
+                    <p>경험 중심의<br>UX/UI 설계</p>
                 </div>
                 <div class="process-arrow">→</div>
                 <div class="process-step">
                     <div class="step-circle">4</div>
-                    <h4>전략 수립</h4>
-                    <p>차별화된 전략을 수립합니다</p>
+                    <h4>개발</h4>
+                    <p>고품질의<br>웹사이트 구현</p>
                 </div>
                 <div class="process-arrow">→</div>
                 <div class="process-step">
                     <div class="step-circle">5</div>
-                    <h4>제작·배포</h4>
-                    <p>최적화 홈페이지를 제작합니다</p>
+                    <h4>런칭</h4>
+                    <p>최종 검수 후<br>서비스 오픈</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 환자 온라인 여정 -->
+    <!-- 환자 여정 -->
     <section class="section journey-section">
         <div class="container">
             <div class="section-header">
-                <h2>환자 온라인 여정 (Patient Journey)</h2>
-                <p class="section-subtitle">환자는 이런 과정으로 병원을 찾습니다</p>
+                <h2>환자의 온라인 여정</h2>
+                <p class="section-subtitle">환자는 이렇게 병원을 찾습니다</p>
             </div>
 
             <div class="journey-path">
                 <div class="journey-step">
                     <div class="journey-icon">🔍</div>
                     <h4>증상 검색</h4>
-                    <p>"어깨 통증"<br>"안경 처방"</p>
+                    <p>증상으로<br>검색 시작</p>
                 </div>
                 <div class="journey-arrow">→</div>
                 <div class="journey-step">
                     <div class="journey-icon">📍</div>
                     <h4>지역 검색</h4>
-                    <p>"강남역<br>정형외과"</p>
+                    <p>가까운 병원<br>찾기</p>
                 </div>
                 <div class="journey-arrow">→</div>
                 <div class="journey-step">
                     <div class="journey-icon">🏥</div>
-                    <h4>병원 비교</h4>
-                    <p>평점<br>후기 확인</p>
+                    <h4>비교 검토</h4>
+                    <p>후기와 정보<br>확인</p>
                 </div>
                 <div class="journey-arrow">→</div>
                 <div class="journey-step">
@@ -854,7 +752,7 @@
                 <div class="journey-step">
                     <div class="journey-icon">⭐</div>
                     <h4>후기 작성</h4>
-                    <p>진료 경험<br>공유</p>
+                    <p>경험<br>공유</p>
                 </div>
             </div>
         </div>
@@ -865,54 +763,54 @@
         <div class="container">
             <div class="section-header">
                 <h2>기본 제공 기능</h2>
-                <p class="section-subtitle">모든 병원 홈페이지에 포함되는 9가지 필수 기능</p>
+                <p class="section-subtitle">모든 병원 홈페이지에 포함되는 필수 요소</p>
             </div>
 
             <div class="features-grid">
                 <div class="feature-box">
                     <div class="feature-emoji">📱</div>
-                    <h4>반응형 웹디자인</h4>
-                    <p>모바일, 태블릿, PC 모든 기기에 완벽 최적화</p>
+                    <h4>반응형 디자인</h4>
+                    <p>모든 디바이스에 최적화</p>
                 </div>
                 <div class="feature-box">
                     <div class="feature-emoji">🔒</div>
-                    <h4>SSL 보안</h4>
-                    <p>HTTPS 보안으로 환자 정보 안전 보호</p>
+                    <h4>보안 인증</h4>
+                    <p>SSL 인증으로 보안 강화</p>
                 </div>
                 <div class="feature-box">
                     <div class="feature-emoji">🔍</div>
-                    <h4>검색엔진 등록</h4>
-                    <p>Google, Naver 주요 검색엔진 등록</p>
+                    <h4>검색 최적화</h4>
+                    <p>SEO 완벽 구성</p>
                 </div>
                 <div class="feature-box">
                     <div class="feature-emoji">📊</div>
                     <h4>분석 도구</h4>
-                    <p>Google Analytics 방문자 분석</p>
+                    <p>방문자 통계 제공</p>
                 </div>
                 <div class="feature-box">
                     <div class="feature-emoji">QR</div>
                     <h4>QR 코드</h4>
-                    <p>명함, 간판용 QR코드 제공</p>
+                    <p>명함, 간판용 제공</p>
                 </div>
                 <div class="feature-box">
                     <div class="feature-emoji">💬</div>
-                    <h4>상담 채널</h4>
-                    <p>전화, 문자, 이메일 다채로운 상담</p>
+                    <h4>상담 기능</h4>
+                    <p>다양한 문의 채널</p>
                 </div>
                 <div class="feature-box">
                     <div class="feature-emoji">📧</div>
-                    <h4>이메일 마케팅</h4>
-                    <p>뉴스레터, 이벤트 자동화</p>
+                    <h4>뉴스레터</h4>
+                    <p>정기 소식 전달</p>
                 </div>
                 <div class="feature-box">
                     <div class="feature-emoji">💳</div>
-                    <h4>결제 시스템</h4>
-                    <p>온라인 상담료 결제 기능</p>
+                    <h4>온라인 결제</h4>
+                    <p>예약금 결제 가능</p>
                 </div>
                 <div class="feature-box">
                     <div class="feature-emoji">🔄</div>
-                    <h4>정기 유지보수</h4>
-                    <p>6개월 무료 유지보수 및 업데이트</p>
+                    <h4>유지보수</h4>
+                    <p>6개월 무료 관리</p>
                 </div>
             </div>
         </div>
@@ -922,45 +820,45 @@
     <section class="section faq-section">
         <div class="container">
             <div class="section-header">
-                <h2>자주 묻는 질문 (FAQ)</h2>
-                <p class="section-subtitle">병원 홈페이지 제작에 대해 궁금한 점들</p>
+                <h2>자주 묻는 질문</h2>
+                <p class="section-subtitle">병원 홈페이지 제작 FAQ</p>
             </div>
 
             <div class="faq-container">
                 <div class="faq-item">
-                    <div class="faq-question">Q. 제작 기간은 얼마나 걸리나요?</div>
-                    <div class="faq-answer">A. 일반적으로 4-6주가 소요됩니다. 콘텐츠 준비와 수정 횟수에 따라 조정 가능합니다.</div>
+                    <div class="faq-question">Q. 제작 기간은 얼마나 되나요?</div>
+                    <div class="faq-answer">A. 일반적으로 4-6주 소요됩니다. 콘텐츠 준비와 수정 횟수에 따라 조정됩니다.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Q. 기존 홈페이지를 리뉴얼할 수 있나요?</div>
-                    <div class="faq-answer">A. 네, 기존 도메인과 이메일을 유지하면서 완전히 새로운 디자인으로 리뉴얼할 수 있습니다.</div>
+                    <div class="faq-answer">A. 네, 기존 도메인과 이메일을 유지하면서 완전히 새롭게 리뉴얼할 수 있습니다.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Q. 예약 시스템은 반드시 필요한가요?</div>
-                    <div class="faq-answer">A. 필수는 아니지만, 예약 시스템이 있으면 환자 문의와 내원이 크게 증가합니다.</div>
+                    <div class="faq-question">Q. SEO 효과는 언제 볼 수 있나요?</div>
+                    <div class="faq-answer">A. 2-3개월 후 개선 효과를 경험할 수 있습니다. 검색 순위는 여러 요인에 영향을 받습니다.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Q. SEO 최적화 결과는 언제 볼 수 있나요?</div>
-                    <div class="faq-answer">A. 일반적으로 2-3개월 후 개선 효과를 볼 수 있습니다. 검색 순위는 다양한 요소에 영향을 받습니다.</div>
+                    <div class="faq-question">Q. 사후 관리 서비스가 있나요?</div>
+                    <div class="faq-answer">A. 6개월 무료 유지보수 이후, 월정액으로 지속적 관리 서비스를 제공합니다.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Q. 사후 관리는 어떻게 이루어지나요?</div>
-                    <div class="faq-answer">A. 6개월 무료 유지보수 후, 월정액으로 지속적인 업데이트와 관리를 제공합니다.</div>
+                    <div class="faq-question">Q. 모바일 앱도 만들 수 있나요?</div>
+                    <div class="faq-answer">A. 웹사이트를 기반으로 모바일 앱 제작도 가능합니다. 별도 상담을 통해 진행합니다.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Q. 해외 환자도 받을 수 있나요?</div>
-                    <div class="faq-answer">A. 네, 영문 또는 다국어 지원으로 국제 환자 유입도 가능합니다. 별도 비용이 발생합니다.</div>
+                    <div class="faq-question">Q. 다국어 지원이 가능한가요?</div>
+                    <div class="faq-answer">A. 네, 영문 및 다국어 지원으로 국제 환자 유입도 가능합니다. 별도 비용이 발생합니다.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 최종 CTA -->
+    <!-- CTA 섹션 -->
     <section class="cta-section">
-        <div class="cta-content">
-            <h2>지금 바로 환자 중심의 병원 홈페이지를 시작하세요</h2>
-            <p>온라인 환자 유입을 증가시키고 병원 운영을 효율화하세요</p>
-            <a href="contact.html" class="btn btn-primary">무료 진단 신청하기</a>
+        <div class="container">
+            <h2>지금 바로 시작하세요</h2>
+            <p>환자와의 연결을 강화하는 병원 홈페이지</p>
+            <a href="contact.html" class="btn btn-primary">상담 신청</a>
         </div>
     </section>
 
@@ -970,7 +868,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h5>MonqWeb</h5>
-                    <p>당신의 비즈니스를 성장시키는 웹사이트 제작 전문가</p>
+                    <p>신뢰받는 웹사이트 제작 전문가</p>
                 </div>
                 <div class="footer-section">
                     <h5>서비스</h5>
