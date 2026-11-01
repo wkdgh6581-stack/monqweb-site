@@ -5,7 +5,24 @@
       "Bash(git init *)",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(git config *)"
+      "Bash(git config *)",
+      "Bash(python -m http.server 8000)",
+      "WebFetch(domain:localhost)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__browser_batch",
+      "Bash(ls -la \"C:\\\\Users\\\\mycom\\\\Downloads\\\\장호\\\\\" | grep -i logo)",
+      "Bash(dir)",
+      "Bash(findstr logo *)",
+      "Bash(dir \"C:\\\\Users\\\\mycom\\\\Downloads\\\\장호\\\\*.png\")",
+      "mcp__Claude_in_Chrome__tabs_create_mcp",
+      "Bash(ffmpeg -i main.mov -c:v libx264 -crf 23 -c:a aac -b:a 128k main.mp4 -y)",
+      "Bash(gh --version)",
+      "Bash(git remote *)",
+      "Bash(git branch *)",
+      "Bash(git push *)",
+      "Bash(git rm *)",
+      "Bash(git reset *)",
+      "Bash(git restore *)"
     ]
   }
 }
